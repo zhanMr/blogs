@@ -1,19 +1,21 @@
-let React = require('react');
-let Layout = React.createClass({
-    render: function() {
+import React from 'react';
+class Layout extends React.Component{
+    render() {
         return (
             <html>
                 <head>
                     <title>{this.props.title}</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-                  </head>
+                    <link rel="stylesheet" type="text/css" href="/css/webapp.css?v=20170310"/>
+
+                </head>
                 <body>
                     {this.props.children}
-                    <script src="/javascripts/libs.min.js"></script>
-                    <script src="/javascripts/app.js"></script>
+                    <script src="/js/libs.min.js?v=20170310"></script>
+                    <script src="/js/app.js?v=20170310"></script>
                 </body>
             </html>
         )
     }
-});
+};
 module.exports = Layout;
