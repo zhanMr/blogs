@@ -5,10 +5,10 @@ let favicon = require('static-favicon');
 let logger = require('morgan');
 let cookieParser = require('cookie-parser');
 let bodyParser = require('body-parser');
-let appConfig = require('./app.Config');
+
 
 let app = express();
-
+const routes = require('./routes/webapp/index');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
@@ -23,11 +23,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 20000 }));
 
 
-for(let route in appConfig){
-    app.use(route, require(appConfig[route]));
-}
-
-
+app.use('/', routes);
+app.use('/index', routes);
+app.use('/message', routes);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
