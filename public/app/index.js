@@ -11,6 +11,7 @@ class Index extends React.Component{
         fetch('/', {method: 'post'})
             .then(json => json.json())
             .then(json => {
+                this.setState({art: json.data});
                 console.log(json);
             })
             .then(e =>{
@@ -19,9 +20,18 @@ class Index extends React.Component{
 
     }
     render(){
+        let {art} = this.state;
         return (
             <div>
                 <h1>首页</h1>
+                {art.map((item) => {
+                    return (
+                        <article key={item.id}>
+                            <h3><Link>{item.title}</Link></h3>
+                            <p>{item.introduction}</p>
+                        </article>
+                    )
+                })}
                 <Link to="/two">跳转</Link>
             </div>
         )

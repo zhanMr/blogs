@@ -9,9 +9,7 @@ class Layout extends React.Component{
                     <link rel="stylesheet" type="text/css" href="/css/webapp.css?v=20170310"/>
                 </head>
                 <body>
-                    {this.props.children}
                     <div id="JS_APP"></div>
-
                     <script src="/js/app/app.js"></script>
                 </body>
             </html>

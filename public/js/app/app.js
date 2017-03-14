@@ -12369,9 +12369,12 @@ var Index = function (_React$Component) {
     _createClass(Index, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
+            var _this2 = this;
+
             fetch('/', { method: 'post' }).then(function (json) {
                 return json.json();
             }).then(function (json) {
+                _this2.setState({ art: json.data });
                 console.log(json);
             }).then(function (e) {
                 console.log(e);
@@ -12380,6 +12383,8 @@ var Index = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
+            var art = this.state.art;
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -12388,6 +12393,26 @@ var Index = function (_React$Component) {
                     null,
                     '\u9996\u9875'
                 ),
+                art.map(function (item) {
+                    return _react2.default.createElement(
+                        'article',
+                        { key: item.id },
+                        _react2.default.createElement(
+                            'h3',
+                            null,
+                            _react2.default.createElement(
+                                _reactRouter.Link,
+                                null,
+                                item.title
+                            )
+                        ),
+                        _react2.default.createElement(
+                            'p',
+                            null,
+                            item.introduction
+                        )
+                    );
+                }),
                 _react2.default.createElement(
                     _reactRouter.Link,
                     { to: '/two' },

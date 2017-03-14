@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 
 
 let app = express();
-const routes = require('./routes/webapp/index');
+const routes = require('./routes/app/index');
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 //app.set('view engine', 'jade');
