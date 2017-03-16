@@ -1,30 +1,33 @@
 import React from 'react';
 import {Link} from 'react-router';
+import {observer} from 'mobx-react';
+import Store from './store';
+const store = new Store();
+@observer
 class Index extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            art: []
-        }
     }
     componentDidMount(){
-        fetch('/', {method: 'post'})
-            .then(json => json.json())
-            .then(json => {
-                this.setState({art: json.data});
-                console.log(json);
-            })
-            .then(e =>{
-                console.log(e);
-            })
-
+        fetch('/', {
+        method: 'post',
+            headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(json => json.json())
+        .then(json => {
+            store.list = json.data;
+        })
+        .then(e =>{
+            console.log(e);
+        })
     }
     render(){
-        let {art} = this.state;
         return (
             <div>
                 <h1>首页</h1>
-                {art.map((item) => {
+                {store.list && store.list.map((item) => {
                     return (
                         <article key={item.id}>
                             <h3><Link>{item.title}</Link></h3>

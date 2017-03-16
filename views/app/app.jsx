@@ -10,6 +10,7 @@ class Layout extends React.Component{
                 </head>
                 <body>
                     <div id="JS_APP"></div>
+                    <div id="JS_APP2"></div>
                     <script src="/js/app/app.js"></script>
                 </body>
             </html>
