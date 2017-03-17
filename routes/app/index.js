@@ -10,10 +10,10 @@ router.post('/', (req, res) => {
     console.log(req.body);
     //console.log('测试');
     query('select * from content', (err, rows, fields) => {
-          res.json({
-            data: rows,
-              a: 100
-          })
+        res.json({
+          data: rows,
+            a: 100
+        })
     });
 });
 

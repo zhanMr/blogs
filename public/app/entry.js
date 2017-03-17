@@ -20,4 +20,26 @@ ReactDom.render((
   </Router>
 ), document.getElementById('JS_APP'));
 
+/*
+var sleep = function (time) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            resolve('ok');
+        }, time);
+    })
+};
+var start = async function () {
+    try{
+        // 在这里使用起来就像同步代码那样直观
+        console.log('start');
+        let result = await sleep(3000);
+        console.log(result);
+        let result2 = await sleep(1500);
+        console.log(result2);
+    }catch(err){
+        console.log(err);
+    }
 
+};
+start();
+console.log('后面的事情');*/
