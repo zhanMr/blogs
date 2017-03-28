@@ -16338,7 +16338,8 @@ var Index = (0, _mobxReact.observer)(_class = function (_React$Component) {
                     xhr.onreadystatechange = function () {
                         if (xhr.readyState == 4) {
                             if (xhr.status >= 200 && xhr.status < 300 || xhr.status == 304) {
-                                resolve(xhr.status);
+                                console.log(xhr);
+                                resolve(JSON.parse(xhr.response));
                             } else {
                                 resolve(xhr.status);
                             }
@@ -16349,6 +16350,14 @@ var Index = (0, _mobxReact.observer)(_class = function (_React$Component) {
                     xhr.send(data);
                 });
             }
+            var f1 = f('/', null);
+            var f2 = f('/', null);
+            Promise.all([f1, f2]).then(function (json) {
+                console.log(json);
+            }, function (error) {
+                console.log(error);
+            });
+            return;
             var getM = function () {
                 var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(url, data) {
                     var result;
@@ -16363,23 +16372,24 @@ var Index = (0, _mobxReact.observer)(_class = function (_React$Component) {
                                 case 3:
                                     result = _context.sent;
 
+                                    console.log(result.data);
                                     store.list = result.data;
-                                    _context.next = 10;
+                                    _context.next = 11;
                                     break;
 
-                                case 7:
-                                    _context.prev = 7;
+                                case 8:
+                                    _context.prev = 8;
                                     _context.t0 = _context['catch'](0);
 
                                     //reject
                                     console.log('catch', _context.t0);
 
-                                case 10:
+                                case 11:
                                 case 'end':
                                     return _context.stop();
                             }
                         }
-                    }, _callee, _this2, [[0, 7]]);
+                    }, _callee, _this2, [[0, 8]]);
                 }));
 
                 return function getM(_x, _x2) {
@@ -16387,18 +16397,19 @@ var Index = (0, _mobxReact.observer)(_class = function (_React$Component) {
                 };
             }();
             getM('/', null);
-            fetch('/', {
-                method: 'post',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            }).then(function (json) {
-                return json.json();
-            }).then(function (json) {
-                //store.list = json.data;
-            }).then(function (e) {
-                //console.dir(e);
-            });
+            /*      fetch('/', {
+                  method: 'post',
+                      headers: {
+                      'Content-Type': 'application/x-www-form-urlencoded'
+                      }
+                  })
+                  .then(json => json.json())
+                  .then(json => {
+                      //store.list = json.data;
+                  })
+                  .then(e =>{
+                      //console.dir(e);
+                  })*/
         }
     }, {
         key: 'render',

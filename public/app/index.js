@@ -16,7 +16,8 @@ class Index extends React.Component{
                 xhr.onreadystatechange = () => {
                     if(xhr.readyState == 4){
                         if((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304){
-                            resolve(xhr.status);
+                            console.log(xhr);
+                            resolve(JSON.parse(xhr.response));
                         }else{
                             resolve(xhr.status);
                         }
@@ -27,10 +28,19 @@ class Index extends React.Component{
                 xhr.send(data);
             })
         }
+        let f1 = f('/', null);
+        let f2 = f('/', null);
+        Promise.all([f1, f2]).then(json => {
+            console.log(json);
+        }, error => {
+            console.log(error);
+        });
+        return;
         let getM = async (url, data) => {
             try{
               //resolve
               let result = await f(url, data);
+              console.log(result.data);
               store.list = result.data;
             }catch(e){
                 //reject
